@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import SignIn from "./components/SignIn";
-
+import DashBoard from "./components/DashBoard";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,16 +16,22 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <h1>dashboard</h1>,
+    element: (
+      <ProtectedRoute>
+        <DashBoard></DashBoard>
+      </ProtectedRoute>
+    ),
   },
 ]);
 
-function App() {
+function App({ Component, pageProps }) {
   const [count, setCount] = useState(0);
 
   return (
     <div className="w-screen h-screen">
-      <RouterProvider router={router}></RouterProvider>
+      <AuthContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthContextProvider>
     </div>
   );
 }
