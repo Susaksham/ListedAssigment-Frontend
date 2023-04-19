@@ -1,0 +1,16 @@
+.right_container {
+  padding: 1rem 4rem;
+  width: 100%;
+  height: 100%;
+}
+.rightContainer_childContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+@media (max-width: "800px") {
+  html {
+    font-size: 80%;
+  }
+}

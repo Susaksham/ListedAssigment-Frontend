@@ -6,6 +6,7 @@ export default {
     fontFamily: {
       Montserrat: ["Montserrat", "sans-serif"],
       Lato: ["Lato", "sans-serif"],
+      Open: ["Open Sans", "sans-serif"],
     },
   },
 
