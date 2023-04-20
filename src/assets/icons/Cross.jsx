@@ -5,7 +5,7 @@ const Cross = ({ onClick }) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      className="w-[3rem] h-[3rem]"
+      className="mobile:w-[5rem] h-[5rem] laptop:w-[3rem] laptop:h-[3rem]"
       fill="white"
       onClick={onClick}
     >

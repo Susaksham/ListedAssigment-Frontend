@@ -75,3 +75,38 @@ export const getstockData = async (month, year) => {
     return { data: "", statusCode: response.statusCode, error: err };
   }
 };
+export const getstockDataMonthly = async (month, year) => {
+  try {
+    const response = await axios.get(
+      `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=IBM&datatype=json&apikey=M5J0JTMU4OX9VP5Y`
+    );
+    console.log(response.data);
+    console.log(response.data["Weekly Time Series"]);
+    const obj = Object.assign({}, response.data["Weekly Time Series"]);
+    console.log(obj);
+
+    const weeksData = [];
+
+    for (const key in obj) {
+      weeksData.push({ key: key, data: { ...obj[`${key}`] } });
+    }
+
+    console.log(weeksData);
+    const result = weeksData.filter((week) => {
+      const dataArray = week.key.split("-");
+      const currentYear = dataArray[0];
+      const currentMonth = dataArray[1];
+      const day = dataArray[2];
+      if (month == currentMonth && currentYear == year) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(result);
+    return { data: result, statusCode: response.statusCode, error: "" };
+  } catch (err) {
+    console.log(err);
+    return { data: "", statusCode: response.statusCode, error: err };
+  }
+};

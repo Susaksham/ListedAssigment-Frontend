@@ -63,7 +63,7 @@ const GraphItems = () => {
   return (
     <>
       <div className=" px-[4rem] py-[1rem] flex flex-col gap-[2rem] bg-[#FFFFFF] rounded-2xl">
-        <div className="flex">
+        <div className="flex justify-between">
           <div className="flex flex-col items-start justify-center gap-[0.5rem]">
             <h1 className="font-Montserrat text-[1.8rem] font-bold">
               Activities
@@ -77,7 +77,16 @@ const GraphItems = () => {
               </select>
             </form>
           </div>
-          <div></div>
+          <div className="flex gap-6">
+            <div className="flex gap-2 items-center justify-center">
+              <span className="rounded-[100%] w-[1rem] h-[1rem] bg-[#E9A0A0]"></span>
+              <span className="font-Lato text-[1.4rem]">Open</span>
+            </div>
+            <div className="flex gap-2 items-center justify-center">
+              <span className="rounded-[100%] w-[1rem] h-[1rem] bg-[#9BDD7C]"></span>
+              <span className="font-Lato text-[1.4rem]">High</span>
+            </div>
+          </div>
         </div>
         {stockData.status == "pending" && (
           <div className="w-full flex items-center justify-center">

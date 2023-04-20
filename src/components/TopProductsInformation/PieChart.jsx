@@ -9,40 +9,54 @@ export const options = {
   plugins: {
     legend: {
       position: "right",
-      display: true,
+      display: false,
       labels: {
         usePointStyle: true,
       },
     },
   },
 };
-export const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
-      ],
-    },
-  ],
-};
 
-const PieChart = () => {
+const PieChart = (props) => {
+  if (!props.data) {
+    return <p>Loading...</p>;
+  }
+  console.log(props.data);
+  const lineDataOpn = [];
+  const lineDataHigh = [];
+  const lineDatalow = [];
+
+  props.data.forEach((element) => {
+    lineDataOpn.push(
+      (Number(element.data[`1. open`]) -
+        Math.floor(Number(element.data[`1. open`]))) *
+        5000
+    );
+    lineDataHigh.push(
+      (Number(element.data[`2. high`]) -
+        Math.floor(Number(element.data[`2. high`]))) *
+        5000
+    );
+    lineDatalow.push(
+      (Number(element.data[`3. low`]) -
+        Math.floor(Number(element.data[`3. low`]))) *
+        5000
+    );
+  });
+  console.log(lineDataOpn);
+  console.log(lineDataHigh);
+  console.log(lineDatalow);
+  const data = {
+    labels: ["Open", "High", "Low"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [lineDataOpn[0], lineDataHigh[0], lineDatalow[0]],
+        backgroundColor: ["#98D89E", "#EE8484", "#F6DC7D"],
+        borderColor: ["#98D89E", "#EE8484", "#F6DC7D"],
+      },
+    ],
+  };
   const dateChangerHandler = () => {};
   return <Pie options={options} data={data} />;
 };

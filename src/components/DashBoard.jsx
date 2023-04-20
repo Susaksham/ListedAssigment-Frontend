@@ -85,12 +85,12 @@ const DashBoard = () => {
             <div className="flex flex-col pl-[5rem] py-[6rem] justify-between h-full ">
               <div className="flex flex-col gap-[4rem]">
                 <div className="flex justify-between items-center pr-[3rem]">
-                  <h1 className="text-[#FFFFFF] text-[3.6rem] font-Montserrat font-bold">
+                  <h1 className="text-[#FFFFFF] laptop:text-[3.6rem] font-Montserrat font-bold mobile:text-[6rem]">
                     Board.
                   </h1>
                   {showDashBoard && <Cross onClick={dahsBoardToggler}></Cross>}
                 </div>
-                <div className="flex flex-col text-slate-50 gap-[3rem]">
+                <div className="flex flex-col text-slate-50 laptop:gap-[3rem] mobile:gap-[6rem] mobile:mt-[7rem] laptop:mt-0  ">
                   {dashBoardNavLink.map((item) => {
                     return (
                       <NavLink
@@ -106,7 +106,7 @@ const DashBoard = () => {
                       >
                         <span className="flex items-center gap-[2rem] ">
                           <span>{item.icon}</span>
-                          <span className="bg-[FFFFFF] font-Montserrat text-[1.8rem]">
+                          <span className="bg-[FFFFFF] font-Montserrat laptop:text-[1.8rem] mobile:text-[6rem] ">
                             {item.item}
                           </span>
                         </span>
@@ -116,10 +116,10 @@ const DashBoard = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-[2rem]">
-                <h3 className="font-Montserrat text-[#FFFFFF] text-[1.4rem]">
+                <h3 className="font-Montserrat text-[#FFFFFF] laptop:text-[1.4rem] mobile:text-[3rem] ">
                   Help
                 </h3>{" "}
-                <h3 className="font-Montserrat text-[#FFFFFF] text-[1.4rem]">
+                <h3 className="font-Montserrat text-[#FFFFFF] laptop:text-[1.4rem] mobile:text-[3rem]">
                   Contact Us
                 </h3>
               </div>

@@ -27,15 +27,15 @@ const SignIn = () => {
       {/* sign in wrapper */}
       <div className={classes.signInContainer}>
         {/* container_left */}
-        <div className="w-[40vw] flex-4  h-screen bg-[#000000] text-slate-50 flex items-center justify-center">
+        <div className="w-[40vw] laptop:flex mobile:hidden flex-4  h-screen bg-[#000000] text-slate-50 flex items-center justify-center">
           <h1 className="text-[7.2rem] w-[24.6rem] h-[8.8rem] font-Montserrat font-bold">
             Board.
           </h1>
         </div>
         {/* container_left end */}
         {/* container_right start */}
-        <div className=" container_right bg-[#F5F5F5] flex items-center justify-center w-[60vw] flex-6 h-screen">
-          <div className="w-[38.5rem] flex flex-col  ">
+        <div className=" container_right bg-[#F5F5F5] flex items-center justify-center mobile:w-[100vw] laptop:w-[60vw] flex-6 h-screen">
+          <div className=" mobile: laptop:w-[38.5rem] flex flex-col  ">
             <div className="w-full flex flex-col  ">
               <h1 className="font-Montserrat text-[3.6rem] font-bold ">
                 Sign In

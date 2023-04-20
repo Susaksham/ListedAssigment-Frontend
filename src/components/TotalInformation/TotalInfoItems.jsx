@@ -53,6 +53,7 @@ const TotalInfoItems = () => {
                   value={element.value}
                   color={element.color}
                   icon={element.icon}
+                  index={index}
                 ></TotalInfoItem>
               );
             })}
