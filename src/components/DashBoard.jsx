@@ -55,20 +55,16 @@ const DashBoard = () => {
     } else {
     }
   };
-  if (!user) {
-    navigate("/");
-  }
+  // if (!user) {
+  //   navigate("/");
+  // }
 
   const dahsBoardToggler = () => {
     setShowDashBoard((state) => {
       return !state;
     });
   };
-  useEffect(() => {
-    if (authContext.user) {
-      navigate("/dashboard");
-    }
-  }, [authContext.user]);
+
   return (
     <>
       {/* wrapper */}
