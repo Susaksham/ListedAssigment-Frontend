@@ -55,6 +55,9 @@ const DashBoard = () => {
     } else {
     }
   };
+  if (!user) {
+    navigate("/");
+  }
 
   const dahsBoardToggler = () => {
     setShowDashBoard((state) => {
