@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, NavLink } from "react-router-dom";
 // import schedules from "../assets/icons/schedule_icon.svg";
@@ -15,6 +15,7 @@ import GraphItems from "./GraphInformation/GraphItems";
 import TopProductsInfo from "./TopProductsInformation/TopProductsInfo";
 import Schedules from "./Schedules/Schedules";
 import Header from "./Header/Header";
+import Cross from "../assets/icons/Cross";
 const dashBoardNavLink = [
   {
     id: Math.random().toString() + Math.random().toString(),
@@ -46,7 +47,7 @@ const DashBoard = () => {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
   const user = authContext.user;
-
+  const [showDashBoard, setShowDashBoard] = useState(false);
   const logoutHandler = () => {
     const ans = confirm("Do you want to logout?");
     if (ans) {
@@ -54,22 +55,38 @@ const DashBoard = () => {
     } else {
     }
   };
+  const dahsBoardToggler = () => {
+    setShowDashBoard((state) => {
+      return !state;
+    });
+  };
 
   return (
     <>
       {/* wrapper */}
-      <div className="w-screen h-screen bg-[#F5F5F5] p-[2rem]">
+      <div
+        className={`w-screen laptop:h-screen mobile:min-h-screen bg-[#F5F5F5] ${
+          showDashBoard ? "p-[0rem]" : "p-[2rem]"
+        } `}
+      >
         {" "}
         {/* container */}
-        <div className="w-full h-full  gap-[4rem] flex">
+        <div className="w-full h-full  gap-[4rem]  flex relative">
           {/* container left */}
-          <div className="h-full w-[30rem] bg-[#000000] rounded-[2rem]">
+          <div
+            className={`${classes.left_container} ${
+              showDashBoard ? classes.visible : classes.notShow
+            }`}
+          >
             {/* container left surrounder */}
             <div className="flex flex-col pl-[5rem] py-[6rem] justify-between h-full ">
               <div className="flex flex-col gap-[4rem]">
-                <h1 className="text-[#FFFFFF] text-[3.6rem] font-Montserrat font-bold">
-                  Board.
-                </h1>
+                <div className="flex justify-between items-center pr-[3rem]">
+                  <h1 className="text-[#FFFFFF] text-[3.6rem] font-Montserrat font-bold">
+                    Board.
+                  </h1>
+                  {showDashBoard && <Cross onClick={dahsBoardToggler}></Cross>}
+                </div>
                 <div className="flex flex-col text-slate-50 gap-[3rem]">
                   {dashBoardNavLink.map((item) => {
                     return (
@@ -110,7 +127,7 @@ const DashBoard = () => {
           {/* container right */}
           <div className={classes.right_container}>
             <div className={classes.rightContainer_childContainer}>
-              <Header></Header>
+              <Header dahsBoardToggler={dahsBoardToggler}></Header>
               {/* TotalInformation_container */}
               <div className="w-full h-fit">
                 <TotalInfoItems></TotalInfoItems>
@@ -121,7 +138,7 @@ const DashBoard = () => {
                 <GraphItems></GraphItems>
               </div>
               {/* GraphInformation_container end */}
-              <div className="flex w-full gap-[4rem]">
+              <div className="flex  mobile:flex-col laptop:flex-row  w-full laptop:gap-[4rem] mobile:gap-[3rem]">
                 <div className="flex-1 bg-[#ffffff] px-[4rem] py-[1.5rem] rounded-2xl">
                   <TopProductsInfo></TopProductsInfo>
                 </div>

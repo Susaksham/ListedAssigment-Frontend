@@ -1,17 +1,21 @@
 import React from "react";
-import Meetings from "../Meetings/Meetings";
+import Meeting from "../Meetings/Meeting";
 // import SeeAllIcon from "../../assets/SeeAllPng.png";
 import SeeAllIcon from "../../assets/icons/SeeAllIcon";
 const meetingData = [
   {
+    id: "id1",
     description: "Meeting with suppliers from Kuta Bali",
     time: "14.00-15.00",
     address: "at Sunset Road, Kuta, Bali",
+    color: "#9BDD7C",
   },
   {
+    id: "id2",
     description: "Check operation at Giga Factory 1",
     time: "18.00-20.00",
     address: "at Central Jakarta ",
+    color: "#6972C3",
   },
 ];
 const Schedules = () => {
@@ -36,7 +40,7 @@ const Schedules = () => {
       </div>
       <div className="flex flex-col items-start gap-[1.3rem]">
         {meetingData.map((meeting) => {
-          return <Meetings meeting={meeting}></Meetings>;
+          return <Meeting key={meeting.id} meeting={meeting}></Meeting>;
         })}
       </div>
     </div>

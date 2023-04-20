@@ -3,7 +3,7 @@ import { getTotalData } from "../../helper/helper";
 import { useSearchParams } from "react-router-dom";
 import TotalInfoItem from "./TotalInfoItem";
 import Loader from "../../UI/Loader";
-const totalInfoArray = [];
+import classes from "./TotalInfoItems.module.css";
 
 const TotalInfoItems = () => {
   const [allData, setAllData] = useState({
@@ -44,7 +44,7 @@ const TotalInfoItems = () => {
           </div>
         )}
         {allData.status == "success" && (
-          <div className="flex w-full flex-wrap gap-[4.5rem]">
+          <div className={classes.totalItems}>
             {allData.data.map((element, index) => {
               return (
                 <TotalInfoItem

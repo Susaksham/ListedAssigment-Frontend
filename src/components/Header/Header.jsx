@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import BellIcon from "../../assets/icons/BellIcon";
-const Header = () => {
+import Hamburger from "../../assets/icons/Hamburger";
+const Header = ({ dahsBoardToggler }) => {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
   const user = authContext.user;
@@ -17,9 +18,14 @@ const Header = () => {
   };
   return (
     <div className="flex justify-between">
-      <h1 className="text-[#000000] font-Montserrat font-bold text-[2.4rem]">
-        Dashboard
-      </h1>{" "}
+      <div className="flex gap-[2rem] items-center justify-center">
+        <span onClick={dahsBoardToggler} className="laptop:hidden">
+          <Hamburger></Hamburger>
+        </span>
+        <h1 className="text-[#000000] font-Montserrat font-bold text-[2.4rem]">
+          Dashboard
+        </h1>{" "}
+      </div>
       <div className="flex gap-[3rem] items-center">
         {/* search_input */}
         <div className="flex w-[18rem] items-center h-[3rem] justify-center pl-[1.5rem] pr-[0.9rem] rounded-2xl bg-[#FFFFFF]">

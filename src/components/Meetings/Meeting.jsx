@@ -1,8 +1,13 @@
 import React from "react";
 
-const Meetings = ({ meeting }) => {
+const Meeting = ({ meeting }) => {
   return (
-    <div>
+    <div
+      style={{
+        borderLeft: `0.5rem ${meeting.color} solid`,
+        paddingLeft: "1rem",
+      }}
+    >
       <h1 className="font-Lato text-[1.4rem] font-bold text-[#666666]">
         {meeting.description}
       </h1>
@@ -14,4 +19,4 @@ const Meetings = ({ meeting }) => {
   );
 };
 
-export default Meetings;
+export default Meeting;

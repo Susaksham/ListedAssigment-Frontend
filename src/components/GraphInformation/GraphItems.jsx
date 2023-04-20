@@ -27,7 +27,7 @@ const GraphItems = () => {
           setStockData((state) => {
             return { data, error, status: "success" };
           });
-        }, 2000);
+        }, 500);
       } else {
         setStockData((state) => {
           return { data, error, status: "failed" };

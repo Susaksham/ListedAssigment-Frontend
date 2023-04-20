@@ -1,0 +1,5 @@
+.totalItems {
+  width: 100%;
+  flex-wrap: wrap;
+  @apply flex  mobile:flex-wrap laptop:flex-nowrap laptop:gap-[4.5rem] mobile:gap-[2rem] laptop:items-center laptop:justify-start mobile:items-center;
+}

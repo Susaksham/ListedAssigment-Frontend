@@ -1,3 +1,7 @@
+.left_container {
+  @apply h-full w-[30rem] bg-[#000000] rounded-[2rem];
+}
+
 .right_container {
   padding: 1rem 4rem;
   width: 100%;
@@ -7,10 +11,60 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   height: 100%;
+  @apply laptop:gap-[1rem] mobile:gap-[3rem];
 }
-@media (max-width: "800px") {
+@media (max-width: 1000px) {
   html {
-    font-size: 80%;
+    font-size: 45%;
+  }
+}
+@media (max-width: 800px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 750px) {
+  html {
+    font-size: 40%;
+  }
+  .visible {
+    position: absolute;
+    width: 45%;
+    z-index: 1000;
+    left: 0;
+    border-radius: 0;
+    transition: all 0.5s;
+  }
+  .notShow {
+    position: absolute;
+    left: -120%;
+    transition: all 0.5s;
+  }
+}
+
+/* @media (max-width: 800px) {
+  html {
+    font-size: 100% !important;
+  }
+} */
+
+@media (max-width: 500px) {
+  html {
+    font-size: 30%;
+  }
+  .visible {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    border-radius: 0;
+    transition: all 0.5s;
+  }
+  .notShow {
+    position: absolute;
+    left: -120%;
+    transition: all 0.5s;
   }
 }
