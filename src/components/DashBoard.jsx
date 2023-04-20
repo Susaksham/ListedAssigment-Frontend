@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Navigate } from "react-router-dom";
 // import schedules from "../assets/icons/schedule_icon.svg";
 import ScheduleIcon from "../assets/icons/ScheduleIcon";
 import SettingIcon from "../assets/icons/SettingIcon";
@@ -61,7 +61,9 @@ const DashBoard = () => {
       return !state;
     });
   };
-
+  if (!user) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <>
       {/* wrapper */}
