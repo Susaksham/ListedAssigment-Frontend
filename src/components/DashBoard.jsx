@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, NavLink } from "react-router-dom";
 // import schedules from "../assets/icons/schedule_icon.svg";
@@ -55,12 +55,17 @@ const DashBoard = () => {
     } else {
     }
   };
+
   const dahsBoardToggler = () => {
     setShowDashBoard((state) => {
       return !state;
     });
   };
-
+  useEffect(() => {
+    if (authContext.user) {
+      navigate("/dashboard");
+    }
+  }, [authContext.user]);
   return (
     <>
       {/* wrapper */}

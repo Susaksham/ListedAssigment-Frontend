@@ -9,6 +9,7 @@ import SignIn from "./components/SignIn";
 import DashBoard from "./components/DashBoard";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { Navigate } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         <DashBoard></DashBoard>
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "*",
+    element: <Navigate to="/"></Navigate>,
   },
 ]);
 
